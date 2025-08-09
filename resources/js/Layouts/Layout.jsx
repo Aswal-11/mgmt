@@ -6,7 +6,7 @@ export default function Layout({Children}){
          <header className="bg-blue-800 text-white flex justify-between items-center p-6 gap-3">
            
                 <div><Link href="/">Home</Link></div>
-                <div><Link href="/create">Create</Link></div>
+                <div><Link href="/teachers_create">Create</Link></div>
            
          </header>
 
