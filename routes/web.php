@@ -10,14 +10,31 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TeachersController;
 
+/*------------------------------------------------------------------------------------------ */
+
+
 Route::get('/', function () {
     return Inertia::render('Home',['name'=>'Mike']);
 })->name('teachers.home');
 
-Route::get('/teachers_create', [TeachersController::class, 'create'])->name('teacher.create');
+/*------------------------------------------------------------------------------------------ */
 
+
+/**
+ * Subject related routes
+ */
+Route::get('/subject_create', [SubjectsController::class, 'Create'])->name('subject.create');
+
+/*------------------------------------------------------------------------------------------ */
+
+/**
+ * Teacher realted routes
+ */
+Route::get('/teachers_create', [TeachersController::class, 'create'])->name('teacher.create');
 Route::post('/teachers_store', [TeachersController::class, 'store'])->name('teacher.store');
 
+/*------------------------------------------------------------------------------------------ */
 
-// Subject related routes
-Route::get('/subject_create', [SubjectsController::class, 'Create'])->name('subject.create');
+
+
+
