@@ -23,7 +23,8 @@ Route::get('/', function () {
 /**
  * Subject related routes
  */
-Route::get('/subject_create', [SubjectsController::class, 'Create'])->name('subject.create');
+Route::get('/subject_create', [SubjectsController::class, 'create'])->name('subject.create');
+Route::post('/subject_store', [SubjectsController::class, 'store'])->name('subject.store');
 
 /*------------------------------------------------------------------------------------------ */
 

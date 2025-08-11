@@ -2,16 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//Inertia
 use Inertia\Inertia;
+
+//Model
+use App\Models\Subject;
+
+//Request
+use App\Http\Requests\SubjectRequest;
+
 
 class SubjectsController extends Controller
 {
     
     /**
-     * Creating the subjects
+     * It will routes to subject create page
      */
     public function create(){
         return Inertia::render('subject/Create');
+    }
+
+    /**
+     *Store subject in the datbase
+     */
+    public function store(SubjectRequest $subject){
+        $input = $subject->validated();
+
+        if($input)
+        {
+            Subject::create($input);
+        }
     }
 }
