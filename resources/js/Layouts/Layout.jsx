@@ -7,6 +7,7 @@ export default function Layout({Children}){
            
                 <div><Link href="/">Home</Link></div>
                 <div><Link href="/teachers_create">Create</Link></div>
+                 {/* <div><Link href="/subject_create">Subject</Link></div> */}
            
          </header>
 

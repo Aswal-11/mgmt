@@ -16,8 +16,6 @@ class TeachersController extends Controller
     }
     public function store(TeacherRequest $teacher)
     {
-       
-
         Teacher::create($teacher);
 
         return redirect()->route('teachers.home')
