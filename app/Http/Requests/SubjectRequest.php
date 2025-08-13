@@ -22,8 +22,8 @@ class SubjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'subject_name' => 'required|string|max:255|unique:subjects,subject_name',
-            'subject_code' => 'required|string|max:50|unique:subjects,subject_code',
+            'subject_name' => ['required', 'string', 'max:255', 'unique:subjects,subject_name'],
+            'subject_code' => ['required', 'string', 'max:50', 'unique:subjects,subject_code'],
         ];
     }
 }

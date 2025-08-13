@@ -14,8 +14,8 @@ use App\Http\Controllers\TeachersController;
 
 
 Route::get('/', function () {
-    return Inertia::render('Home',['name'=>'Mike']);
-})->name('teachers.home');
+    return Inertia::render('dashboard');
+})->name('dashboard.home');
 
 /*------------------------------------------------------------------------------------------ */
 
