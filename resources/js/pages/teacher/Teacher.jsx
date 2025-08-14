@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { router, usePage } from '@inertiajs/react';
+import SidebarLayout from '../../Layouts/SidebarLayout';
 
-export default function Home() {
+export default function Teacher() {
   const { errors } = usePage().props;
 
   const [values, setValues] = useState({
@@ -40,7 +41,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto p-4 max-w-6xl">
+    <div className="container md:mx-auto md:p-4 max-w-6xl">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Header */}
         <div className="bg-blue-600 py-4 px-6">
@@ -48,7 +49,7 @@ export default function Home() {
           <p className="text-blue-100">Fill in the details below to register a new employee</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8 p-6">
+        <form onSubmit={handleSubmit} className="space-y-8 md:p-6">
           {/* Personal Information */}
           <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
             <h2 className="text-xl font-semibold mb-4 text-gray-800 border-b pb-2 flex items-center">
@@ -58,7 +59,7 @@ export default function Home() {
               Personal Information
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
+
               {/* Name */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
@@ -372,3 +373,5 @@ export default function Home() {
     </div>
   );
 }
+
+Teacher.layout = (page) => <SidebarLayout>{page}</SidebarLayout>
