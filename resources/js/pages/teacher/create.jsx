@@ -81,15 +81,15 @@ export default function create() {
   return (
     <>
       <div className="flex justify-end w-full mb-4">
-       <Link href="/teachers_index">
-  <Button className="bg-blue-400 hover:bg-blue-800 text-white 
+        <Link href="/teachers_index">
+          <Button className="bg-blue-400 hover:bg-blue-800 text-white 
                     active:scale-95 active:bg-blue-600 
                     transition-all duration-75">
-    View All Teachers
-  </Button>
-</Link>
+            View All Teachers
+          </Button>
+        </Link>
       </div>
-      
+
       <div className="container md:mx-auto md:p-4 max-w-6xl">
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Header */}
