@@ -18,7 +18,7 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::select('name', 'email', 'subject')->get();
+        $teachers = Teacher::all();
 
         return Inertia::render('teacher/index', compact('teachers'));
     }
@@ -40,5 +40,13 @@ class TeachersController extends Controller
 
         return Inertia::render('teacher/index')
             ->with('success', 'Employee created successfully!');
+    }
+
+    public function delete($id)
+    {
+        $teacher = Teacher::findOrFail($id); // find teacher or throw 404
+        $teacher->delete(); // delete record
+
+        return redirect()->back()->with('success', 'Teacher deleted successfully!');
     }
 }

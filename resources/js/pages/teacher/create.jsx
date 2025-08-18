@@ -80,7 +80,7 @@ export default function create() {
 
   return (
     <>
-      <div className="flex justify-end w-full mb-4">
+      <div className="flex  w-full mb-4">
         <Link href="/teachers_index">
           <Button className="bg-blue-400 hover:bg-blue-800 text-white 
                     active:scale-95 active:bg-blue-600 

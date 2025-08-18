@@ -19,7 +19,7 @@ class SubjectsController extends Controller
      * It will routes to subject create page
      */
     public function create(){
-        return Inertia::render('subject/Create');
+        return Inertia::render('subject/create');
     }
 
     /**

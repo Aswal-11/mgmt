@@ -34,6 +34,7 @@ Route::post('/subject_store', [SubjectsController::class, 'store'])->name('subje
 Route::get('/teachers_index', [TeachersController::class, 'index'])->name('teacher.index');
 Route::get('/teachers_create', [TeachersController::class, 'create'])->name('teacher.create');
 Route::post('/teachers_store', [TeachersController::class, 'store'])->name('teacher.store');
+Route::delete('/teacher/delete/{id}', [TeachersController::class, 'delete'])->name('teacher.delete');
 
 /*------------------------------------------------------------------------------------------ */
 
