@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('address');
             $table->date('dob');
             $table->string('aadhar_number');
-            $table->string('subject');
             $table->string('graduation_degree_name');
             $table->date('graduation_year');
             $table->string('post_graduation_degree_name')->nullable();

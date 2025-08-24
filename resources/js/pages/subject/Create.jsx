@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
-// ✅ Zod schema for validation
+//  Zod schema for validation
 const subjectSchema = z.object({
   subject_name: z.string().min(1, "Subject name is required"),
   subject_code: z.string().min(1, "Subject code is required"),

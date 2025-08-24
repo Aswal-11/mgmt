@@ -7,7 +7,7 @@ use App\Models\Teacher;
 
 // Requests
 use App\Http\Requests\TeacherRequest;
-
+use App\Models\Subject;
 // Inertia
 use Inertia\Inertia;
 
@@ -28,7 +28,8 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        return Inertia::render('teacher/create');
+        $subjects = Subject::all(); // fetch all subjects
+        return Inertia::render('teacher/create', compact('subjects')); // Pass subjects
     }
 
     /* 
@@ -36,7 +37,10 @@ class TeachersController extends Controller
      */
     public function store(TeacherRequest $teacher)
     {
-        Teacher::create($teacher);
+        $input = $teacher->validated();
+
+        dd($input);
+        Teacher::create($input);
 
         return Inertia::render('teacher/index')
             ->with('success', 'Employee created successfully!');

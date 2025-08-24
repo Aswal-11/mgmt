@@ -16,7 +16,7 @@ class Teacher extends Model
         'address',
         'dob',
         'aadhar_number',
-        'subject',
+        'subject_id',
         'graduation_degree_name',
         'graduation_year',
         'post_graduation_degree_name',
@@ -28,4 +28,7 @@ class Teacher extends Model
         'status'
     ];
 
+    public function subjects(){
+        return $this->belongsToMany(Subject::class);
+    }
 }

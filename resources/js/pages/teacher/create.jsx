@@ -10,6 +10,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import { FaEye } from "react-icons/fa";
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -34,7 +35,7 @@ const formSchema = z.object({
   address: z.string().min(5, "Address is required"),
   dob: z.date(),
   aadhar_number: z.string().min(12, "Aadhar number must be 12 digits"),
-  subject: z.string().min(2, "Subject is required"),
+  subject_id: z.string().min(1, "Subject is required"),
   graduation_degree_name: z.string().min(2, "Degree name is required"),
   graduation_year: z.date(),
   post_graduation_degree_name: z.string().optional(),
@@ -47,7 +48,7 @@ const formSchema = z.object({
 })
 
 export default function create() {
-  const { errors } = usePage().props
+  const { errors, subjects } = usePage().props
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -61,7 +62,7 @@ export default function create() {
       address: '',
       dob: new Date(),
       aadhar_number: '',
-      subject: '',
+      subject_id: '',
       graduation_degree_name: '',
       graduation_year: new Date(),
       post_graduation_degree_name: '',
@@ -75,23 +76,32 @@ export default function create() {
   })
 
   const onSubmit = (data) => {
-    router.post('/teachers_store', data)
+    console.log('Submitting data:', data)
+    router.post('/teachers_store', data, {
+      onError: (errors) => {
+        console.log('Validation errors:', errors);
+      },
+      onSuccess: () => {
+        console.log('Form submitted successfully');
+      }
+    })
   }
 
   return (
     <>
-      <div className="flex  w-full mb-4">
+      <div className="flex  w-full mb-3">
         <Link href="/teachers_index">
           <Button className="bg-blue-400 hover:bg-blue-800 text-white 
                     active:scale-95 active:bg-blue-600 
                     transition-all duration-75">
-            View All Teachers
+            <FaEye />
+            View Teachers
           </Button>
         </Link>
       </div>
 
-      <div className="container md:mx-auto md:p-4 max-w-6xl">
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className="container ">
+        <div className="bg-white rounded-sm border border-blue-200 shadow-lg overflow-hidden">
           {/* Header */}
           <div className="bg-blue-600 py-4 px-6">
             <h1 className="text-2xl font-bold text-white">Employee Registration</h1>
@@ -309,13 +319,24 @@ export default function create() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
-                    name="subject"
+                    name="subject_id"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Subject *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Mathematics" {...field} />
-                        </FormControl>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select a subject" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {subjects && subjects.map((subject) => (
+                              <SelectItem key={subject.id} value={subject.id.toString()}>
+                                {subject.subject_name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
